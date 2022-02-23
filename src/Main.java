@@ -1,11 +1,13 @@
 import uaslp.objetos.list.linkedlist.LinkedList;
 import uaslp.objetos.list.linkedlist.LinkedListIterator;
+import uaslp.objetos.list.arraylist.ArrayList;
+import uaslp.objetos.list.arraylist.ArrayListIterator;
 //Para organizar código creamos paquetes
 public class Main{
     public static void main(String[] args) {//psv
-        LinkedList team1 = new LinkedList();
-        LinkedList team2 = new LinkedList();
-        LinkedList team3 = new LinkedList();
+        ArrayList team1 = new ArrayList();
+        ArrayList team2 = new ArrayList();
+        ArrayList team3 = new ArrayList();
 
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
@@ -19,7 +21,7 @@ public class Main{
 
         System.out.println(">>Team 1 original\n");
 
-        LinkedListIterator iterator;
+        ArrayListIterator iterator;
 
         iterator = team1.getIterator();
 
