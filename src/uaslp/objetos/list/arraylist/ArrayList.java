@@ -1,8 +1,8 @@
 package uaslp.objetos.list.arraylist;
+import uaslp.objetos.list.List;
+import uaslp.objetos.list.Iterator;
 
-import uaslp.objetos.list.linkedlist.LinkedListIterator;
-
-public class ArrayList {
+public class ArrayList implements List {//Le decimos que implemmenta a mi contrato de interfaz lista
 //Declaración de constantes en java
     private static final int DEFAULT_SIZE = 50;
     private String[] array;
@@ -15,6 +15,7 @@ public class ArrayList {
         array = new String[size];
     }
 
+    @Override //Como buena practica de programación/diseño
     public void addAtTail(String data){
 
         if(size == array.length){//Si si
@@ -24,6 +25,7 @@ public class ArrayList {
         size++;
     }
 
+    @Override //Como buena practica de programación/diseño
     public void addAtFront(String data){//Recorre todos los elementos ya insertados hacia atrás
 
         if(size == array.length){//Está lleno el arreglo, error de lo que asignamos
@@ -36,6 +38,7 @@ public class ArrayList {
         size++;
     }
 
+    @Override //Como buena practica de programación/diseño
     public void remove(int index){
 
         if(index < 0 || index >= size){
@@ -49,6 +52,7 @@ public class ArrayList {
         size--;
     }
 
+    @Override //Como buena practica de programación/diseño
     public void removeAll(){
         for(int i =  0; i < size; i++){//Vaciamos toda la lista
             array[i] = null;
@@ -56,20 +60,24 @@ public class ArrayList {
         size = 0;//El tamaño lo pones en 0 ya que liberamos el espacio
     }
 
+    @Override //Como buena practica de programación/diseño
     public void setAt(int index, String data){//Le inserto un valor e información
         if(index >= 0 && index < size){
             array[index] = data;
         }
     }
 
+    @Override //Como buena practica de programación/diseño
     public String getAt(int index){//Busca el nodo que yo le diga
         return index >= 0 && index < size ? array[index] : null;
     }
 
-    public ArrayListIterator getIterator(){
+    @Override //Como buena practica de programación/diseño
+    public Iterator getIterator(){
         return new ArrayListIterator(this);//le pase el arreglo, sobre QUIÉN se va a estra moviendo
     }
 
+    @Override //Como buena practica de programación/diseño
     public int getSize(){
         return size;
     }

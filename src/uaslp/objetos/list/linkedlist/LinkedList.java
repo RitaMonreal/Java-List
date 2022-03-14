@@ -1,7 +1,8 @@
 package uaslp.objetos.list.linkedlist;
+import uaslp.objetos.list.List;
 
 //Refactorizar es un conjunto de técnicas que ayudan a  mejorar nuestro código, en la página de source.making hay patrones de diseño
-public class LinkedList {
+public class LinkedList implements List{ //Le decimos que implemmenta a mi contrato de interfaz lista
     private Node head;
     private Node tail;
     private int size;
