@@ -1,14 +1,16 @@
 import uaslp.objetos.list.List;//Este es mi interface de list general
 import uaslp.objetos.list.Iterator;//Este es mi interface de el iterator
 import uaslp.objetos.list.arraylist.ArrayList;
-
+import uaslp.objetos.list.linkedlist.LinkedList;
 //Para organizar código creamos paquetes
-public class Main{
-    public static void main(String[] args) {//psv
-        List team1 = new ArrayList();//Aquí deberías de cambiar solo la asignación, tipo: List team1 = new LinkedList();
-        List team2 = new ArrayList();
-        List team3 = new ArrayList();
 
+public class Main {
+    public static void main(String[] args) {//psv
+        firma(new LinkedList(), new LinkedList(), new LinkedList());
+        firma(new ArrayList(), new ArrayList(), new ArrayList());
+    }
+
+    public static void firma(List team1, List team2, List team3) {//psv
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");
