@@ -6,11 +6,11 @@ import uaslp.objetos.list.linkedlist.LinkedList;
 
 public class Main {
     public static void main(String[] args) {//psv
-        firma(new LinkedList(), new LinkedList(), new LinkedList());
-        firma(new ArrayList(), new ArrayList(), new ArrayList());
+        firma(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        firma(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
     }
 
-    public static void firma(List team1, List team2, List team3) {//psv
+    public static void firma(List<String> team1, List<String> team2, List<String> team3) {//psv
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");
@@ -23,7 +23,7 @@ public class Main {
 
         System.out.println(">>Team 1 original\n");
 
-        Iterator iterator;
+        Iterator<String> iterator;
 
         iterator = team1.getIterator();
 

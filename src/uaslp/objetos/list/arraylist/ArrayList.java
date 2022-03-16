@@ -2,21 +2,25 @@ package uaslp.objetos.list.arraylist;
 import uaslp.objetos.list.List;
 import uaslp.objetos.list.Iterator;
 
-public class ArrayList implements List {//Le decimos que implemmenta a mi contrato de interfaz lista
+public class ArrayList <T> implements List<T>{//Le decimos que implemmenta a mi contrato de interfaz lista
 //Declaración de constantes en java
-    private static final int DEFAULT_SIZE = 50;
-    private String[] array;
+    private static final int DEFAULT_SIZE = 2;
+    private T[] array;
     private int size;
+
+    public static String getName(){
+        return "ArrayList";
+    }
 /*Sobrecarga de métodos, se llaman igual pero llevan diferentes parámetros*/
     public ArrayList(){//Constructor sin parámetros
-        array = new String[DEFAULT_SIZE];
+        array = (T[])new Object[DEFAULT_SIZE];
     }
     public ArrayList(int size){//Constructor con parametros
-        array = new String[size];
+        array = (T[])new Object[size];
     }
 
     @Override //Como buena practica de programación/diseño
-    public void addAtTail(String data){
+    public void addAtTail(T data){
 
         if(size == array.length){//Si si
             increaseArraySize();
@@ -26,7 +30,7 @@ public class ArrayList implements List {//Le decimos que implemmenta a mi contra
     }
 
     @Override //Como buena practica de programación/diseño
-    public void addAtFront(String data){//Recorre todos los elementos ya insertados hacia atrás
+    public void addAtFront(T data){//Recorre todos los elementos ya insertados hacia atrás
 
         if(size == array.length){//Está lleno el arreglo, error de lo que asignamos
             increaseArraySize();
@@ -61,20 +65,20 @@ public class ArrayList implements List {//Le decimos que implemmenta a mi contra
     }
 
     @Override //Como buena practica de programación/diseño
-    public void setAt(int index, String data){//Le inserto un valor e información
+    public void setAt(int index, T data){//Le inserto un valor e información
         if(index >= 0 && index < size){
             array[index] = data;
         }
     }
 
     @Override //Como buena practica de programación/diseño
-    public String getAt(int index){//Busca el nodo que yo le diga
+    public T getAt(int index){//Busca el nodo que yo le diga
         return index >= 0 && index < size ? array[index] : null;
     }
 
     @Override //Como buena practica de programación/diseño
-    public Iterator getIterator(){
-        return new ArrayListIterator(this);//le pase el arreglo, sobre QUIÉN se va a estra moviendo
+    public Iterator <T> getIterator(){
+        return new ArrayListIterator<>(this);//le pase el arreglo, sobre QUIÉN se va a estra moviendo
     }
 
     @Override //Como buena practica de programación/diseño
@@ -83,7 +87,7 @@ public class ArrayList implements List {//Le decimos que implemmenta a mi contra
     }
 
     private void increaseArraySize(){
-        String []newArray = new String[array.length * 2];
+        T []newArray = (T[])new Object[array.length * 2];
 
         for(int i = 0; i < size; i++){//Recorremos los arreglos
             newArray[i] = array[i];//Copiamos al arreglo del tamaño doble la información del arreglo original

@@ -1,13 +1,13 @@
 package uaslp.objetos.list.arraylist;
 import uaslp.objetos.list.Iterator;//Interface de iteradores "contrato"
 
-public class ArrayListIterator implements Iterator {
+public class ArrayListIterator <T> implements Iterator<T> {
     //Atributos
-    private ArrayList arrayList;
+    private final ArrayList<T> arrayList;
     private int currentItem;
 
     //Constructor
-    public ArrayListIterator(ArrayList arrayList){
+    public ArrayListIterator(ArrayList<T> arrayList){
         this.arrayList = arrayList;
     }
 
@@ -16,8 +16,8 @@ public class ArrayListIterator implements Iterator {
         return currentItem < arrayList.getSize();
     }
 
-    public String next(){
-        String data = arrayList.getAt(currentItem);
+    public T next(){
+        T data = arrayList.getAt(currentItem);
         currentItem++;
         return data;
     }
