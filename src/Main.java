@@ -1,16 +1,32 @@
 import uaslp.objetos.list.List;//Este es mi interface de list general
 import uaslp.objetos.list.Iterator;//Este es mi interface de el iterator
-import uaslp.objetos.list.arraylist.ArrayList;
+import uaslp.objetos.list.exception.NotNullValuesAllowedException;
+import uaslp.objetos.list.exception.NotValidIndexException;
 import uaslp.objetos.list.linkedlist.LinkedList;
 //Para organizar código creamos paquetes
 
 public class Main {
-    public static void main(String[] args) {//psv
-        firma(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-        firma(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+    public static void main(String[] args) {//psv throws Exception
+        List<String> team1 = new LinkedList<>();
+        List<String> team2 = new LinkedList<>();
+        List<String> team3 = new LinkedList<>();
+        //  firma(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        //  firma(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+
+        try{
+            firma(team1, team2, team3);
+        }catch (NotValidIndexException e){//índices incorrectos
+           System.out.println(e.getMessage());
+          // e.printStackTrace();
+       }catch (NotNullValuesAllowedException e){//Datos nulos insertados
+            System.out.println(e.getMessage());
+        }
+       // System.out.println("El programa no ha fallado");
     }
 
-    public static void firma(List<String> team1, List<String> team2, List<String> team3) {//psv
+    public static void firma(List<String> team1, List<String> team2, List<String> team3) throws NotValidIndexException, NotNullValuesAllowedException {//psv
+        team1.remove(5);
+        team1.addAtTail(null);
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");
@@ -42,7 +58,6 @@ public class Main {
         }
 
         System.out.println("\n>>Team 1 modificado\n");
-
         team1.remove(0);
         team1.addAtFront("Rebeca");
         System.out.println("*Team 1 tiene: " + team1.getSize() + " integrantes*");

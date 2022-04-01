@@ -1,5 +1,7 @@
 package uaslp.objetos.list.linkedlist;
 import uaslp.objetos.list.List;
+import uaslp.objetos.list.exception.NotNullValuesAllowedException;
+import uaslp.objetos.list.exception.NotValidIndexException;
 
 //Refactorizar es un conjunto de técnicas que ayudan a  mejorar nuestro código, en la página de source.making hay patrones de diseño
 public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a mi contrato de interfaz lista
@@ -7,7 +9,11 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
     private Node<T> tail;
     private int size;
 
-    public void addAtTail(T data){
+    public void addAtTail(T data) throws NotNullValuesAllowedException{
+
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
         Node<T> node = new Node<>(data);
 
         if(size==0){
@@ -21,7 +27,10 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         size ++;
     }
 
-    public void addAtFront(T data){
+    public void addAtFront(T data) throws NotNullValuesAllowedException{
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
         Node<T> node = new Node<>(data);
 
         if(size == 0){//La lista está vacía
@@ -35,7 +44,7 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         size++;
     }
 
-    public void remove(int index){
+    public void remove(int index) throws NotValidIndexException{
         Node <T> node = findNode(index);
 
         if(node == null){//No habia nada, por lo que no se puede eliminar nada
@@ -67,7 +76,10 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         size = 0;
     }
 
-    public void setAt(int index, T data){//Le inserto un valor e información
+    public void setAt(int index, T data) throws NotValidIndexException, NotNullValuesAllowedException {//Le inserto un valor e información
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
         Node<T> node = findNode(index);
 
         if(node != null){
@@ -75,7 +87,13 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         }
     }
 
-    public T getAt(int index){//Busca el nodo que yo le diga
+    /**
+     *
+     * @param index 0 -index
+     * @return element at position index
+     */
+
+    public T getAt(int index) throws NotValidIndexException{//Busca el nodo que yo le diga
         Node<T> node = findNode(index);
 
         return node == null ? null : node.data;//Si es cierto lo de antes del signo me manda lo que está después del signo, sino lo que está después de ñps dos puntos
@@ -85,9 +103,9 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         return new LinkedListIterator<>(head);
     }
 
-    private Node<T> findNode(int index){
+    private Node<T> findNode(int index) throws NotValidIndexException{
         if(index < 0 || index >= size){
-            return null;
+            throw new NotValidIndexException(index);//La estamos propagando
         }
         Node<T> node = head;//Auxiliar que me ponga al principio de la lista
         int currentIndex = 0;//Posición actual = al principio

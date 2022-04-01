@@ -43,7 +43,7 @@ public class ArrayList <T> implements List<T>{//Le decimos que implemmenta a mi 
     }
 
     @Override //Como buena practica de programación/diseño
-    public void remove(int index){
+    public void remove(int index) {//throws IndexOutOfBoundsException
 
         if(index < 0 || index >= size){
             return;
