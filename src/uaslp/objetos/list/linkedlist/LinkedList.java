@@ -46,23 +46,13 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
 
     public void remove(int index) throws NotValidIndexException{
         Node <T> node = findNode(index);
-
-        if(node == null){//No habia nada, por lo que no se puede eliminar nada
-            return;
-        }
         if(size == 1){
             head = null;
             tail = null;
         }else if(node == head){
             head = node.next;//La cabeza va a apuntar al que sigue del que vamos a eliminar
-            if(head != null){//Si el que esta después de eliminar tiene algo colgado antes o sea el que vamos a eliminar que está en el principio
-                head.previous = null;//Lo soltamos completamente
-            }
         }else if(node == tail){//Si el nodo está al final
             tail = node.previous;//La cola suelta el último y apunta al que está de penúltimo
-            if(tail != null){
-                tail.next = null;//Aquí le reafirma el valor de null al que ya está al final de la cola
-            }
         }else{//Si el nodo está al medio
             node.previous.next = node.next;//El que está en el anterior del que voy a borrar en su apuntador de después lo enlazo con el que el que voy a eliminar lo tiene como siguiente
             node.next.previous = node.previous;//El que esta después de eliminar su apuntador de anterior lo pongo en el que está antes de elimar
@@ -82,16 +72,9 @@ public class LinkedList <T> implements List <T>{ //Le decimos que implemmenta a 
         }
         Node<T> node = findNode(index);
 
-        if(node != null){
-            node.data = data;
-        }
+        node.data = data;
     }
 
-    /**
-     *
-     * @param index 0 -index
-     * @return element at position index
-     */
 
     public T getAt(int index) throws NotValidIndexException{//Busca el nodo que yo le diga
         Node<T> node = findNode(index);
