@@ -1,3 +1,4 @@
 out/
 .idea/
-*list.iml/
+*.iml/
+target/
