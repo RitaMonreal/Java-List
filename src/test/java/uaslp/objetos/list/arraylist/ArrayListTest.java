@@ -2,6 +2,8 @@ package uaslp.objetos.list.arraylist;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import uaslp.objetos.list.Iterator;
+import uaslp.objetos.list.exception.NotSuchElementException;
+import uaslp.objetos.list.exception.NotValidIndexException;
 
 public class ArrayListTest {
     @Test
@@ -69,7 +71,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverAllThreeElements()  {
+    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverAllThreeElements() throws NotValidIndexException, NotSuchElementException {
         //Given:
         ArrayList<String> list = new ArrayList<>();
 

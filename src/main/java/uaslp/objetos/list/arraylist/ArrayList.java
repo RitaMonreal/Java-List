@@ -29,6 +29,8 @@ public class ArrayList <T> implements List<T>{//Le decimos que implemmenta a mi 
         size++;
     }
 
+
+
     @Override //Como buena practica de programación/diseño
     public void addAtFront(T data){//Recorre todos los elementos ya insertados hacia atrás
 

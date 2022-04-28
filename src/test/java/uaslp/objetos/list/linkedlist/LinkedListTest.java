@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.exception.NotNullValuesAllowedException;
+import uaslp.objetos.list.exception.NotSuchElementException;
 import uaslp.objetos.list.exception.NotValidIndexException;
 
 public class LinkedListTest {
@@ -206,7 +207,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverAllThreeElements() throws NotValidIndexException, NotNullValuesAllowedException {
+    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverAllThreeElements() throws NotValidIndexException, NotNullValuesAllowedException, NotSuchElementException {
         //Given:
         LinkedList<String>list = new LinkedList<>();
 
