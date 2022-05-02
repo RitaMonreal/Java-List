@@ -85,4 +85,43 @@ public class HashSetTest {
         hashSet.remove("Chihuahua");
         Assertions.assertEquals(2,hashSet.size());
     }
+
+    @Test
+    public void searchElementFromHashSet_whenItIsNotThere_thenResultIsFalse() throws NotValidIndexException, NotNullValuesAllowedException {
+        //Given:
+        HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("Chihuahua");
+        hashSet.add("Coquer");
+
+        //When:
+        int size = hashSet.size();
+
+        //Then:
+        Assertions.assertFalse(hashSet.contains("Vaca"));
+    }
+    @Test
+    public void testThereshold() throws NotValidIndexException, NotNullValuesAllowedException, NotSuchElementException {
+        //Given:
+        HashSet<String> hashSet = new HashSet<>();
+        for (int i = 0; i < 200; i++) {
+            hashSet.add("R" + i);
+        }
+
+        Iterator<String> iterator = hashSet.iterator();
+
+        int size = hashSet.size();
+        HashSet<String> grande = new HashSet<>();
+
+        Assertions.assertEquals(200, size);
+        Assertions.assertNotNull(iterator);
+
+        while (iterator.hasNext()) {
+            grande.add(iterator.next());
+        }
+
+        for (int i = 0; i < 200; i++) {
+            Assertions.assertTrue(hashSet.contains("R" + i));
+        }
+    }
 }

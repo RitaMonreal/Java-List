@@ -70,7 +70,6 @@ public class HashSet<T> implements Set <T> {
                 }
             }
         }
-
         return false;
     }
 
@@ -132,4 +131,6 @@ public class HashSet<T> implements Set <T> {
             throw new NotSuchElementException();
         }
     }
+
+
 }
